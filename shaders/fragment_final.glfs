@@ -1,0 +1,13 @@
+#version 400
+
+in vec2 UV;
+in vec3 fragColor;
+
+out vec3 outputColor;
+
+uniform sampler2D textureSampler;
+uniform float frac;
+
+void main(){
+    outputColor = mix(texture( textureSampler, UV ).rgb, fragColor, frac);
+}

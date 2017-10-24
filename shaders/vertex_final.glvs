@@ -1,0 +1,19 @@
+#version 400
+
+layout(location = 0) in vec3 position;
+layout(location = 1) in vec3 color;
+layout(location = 2) in vec2 vertexUV;
+
+uniform mat4 world;
+uniform mat4 projectionMatrix;
+uniform mat4 modelMatrix;
+
+out vec2 UV;
+out vec3 fragColor;
+
+void main()
+{
+    gl_Position = (projectionMatrix * modelMatrix) * vec4(position, 1.0);
+    UV = vertexUV;
+    fragColor = color;
+}
